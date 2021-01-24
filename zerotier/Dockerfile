@@ -20,7 +20,7 @@ RUN apt-get update && apt-get install -y \
 
 RUN curl -L -o /tmp/zerotier-install.sh https://install.zerotier.com/ && bash /tmp/zerotier-install.sh || exit 0
 
-COPY root/ /
+COPY zerotier/root/ /
 RUN chmod +x /root/run.sh
 
 ENTRYPOINT /root/run.sh

@@ -4,7 +4,7 @@ MAINTAINER OceanIX Administrator <connect@oceanix.net.au>
 LABEL wikiurl="https://wiki.ixpcontrol.com/docker-image/mariadb"
 LABEL version="alpha"
 
-COPY root/ /
+COPY mariadb/root/ /
 RUN chmod +x /root/*.sh
 
 RUN apk add --no-cache mariadb=10.4.15-r0 && \
@@ -15,10 +15,6 @@ RUN apk add --no-cache mariadb=10.4.15-r0 && \
   sed -i -e 's/127.0.0.1/%/' /usr/share/mariadb/mysql_system_tables_data.sql && \
   mkdir /run/mysqld && \
   chown mysql:mysql /etc/my.cnf.d/ /run/mysqld /usr/share/mariadb/mysql_system_tables_data.sql
-
-COPY mariadb/root/ /
-
-
 
 # This is not super helpful; mysqld might be running but not accepting connections.
 # Since we have no clients, we can't really connect to it and check.

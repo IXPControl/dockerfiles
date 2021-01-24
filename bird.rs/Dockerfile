@@ -50,7 +50,7 @@ RUN cd bird-1.6.8 && \
     
 RUN rm -rf /root/bird-1.6.8
 
-COPY root/ /root/
+COPY root/ /
 
 RUN chmod +x /root/run.sh
 

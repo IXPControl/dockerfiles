@@ -45,7 +45,7 @@ RUN git clone https://github.com/alice-lg/alice-theme-example.git && \
 
 RUN mkdir /etc/alice-lg
 
-COPY root/ /
+COPY alice-lg/root/ /
 
 SHELL ["/bin/bash", "-c"]
 

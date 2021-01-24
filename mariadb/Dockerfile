@@ -16,9 +16,7 @@ RUN apk add --no-cache mariadb=10.4.15-r0 && \
   mkdir /run/mysqld && \
   chown mysql:mysql /etc/my.cnf.d/ /run/mysqld /usr/share/mariadb/mysql_system_tables_data.sql
 
-COPY sh/resolveip.sh /usr/bin/resolveip
-COPY sh/run.sh /run.sh
-COPY my.cnf /tmp/my.cnf
+COPY mariadb/root/ /
 
 
 

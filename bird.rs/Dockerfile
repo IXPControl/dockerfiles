@@ -27,13 +27,6 @@ WORKDIR /root
 RUN curl -O -L ftp://bird.network.cz/pub/bird/bird-1.6.8.tar.gz
 RUN tar -xvzf bird-1.6.8.tar.gz
 
-RUN mkdir /bgpq3 && \
-    cd /bgpq3 && \
-    git clone https://github.com/snar/bgpq3.git ./ && \
-    ./configure && \
-    make && \
-    make install
-
 RUN mkdir /etc/bird
 
 RUN cd bird-1.6.8 && \

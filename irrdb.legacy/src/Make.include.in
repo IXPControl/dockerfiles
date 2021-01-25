@@ -1,0 +1,55 @@
+#
+# $Id: Make.include.in,v 1.7 2001/12/03 20:07:33 ljb Exp $
+#
+
+GIT_VERSION = $(shell git describe --abbrev=4 --dirty --always --tags | sed -e 's/^v//')
+
+.c.o:
+	$(CC) $(CFLAGS) $(CPPFLAGS) -c $<; \
+	if [ "$(ARCHIVE)" ]; then \
+		$(AR) $(ARFLAGS) $(ARCHIVE) $@; \
+		$(RANLIB) $(ARCHIVE); fi
+
+@SET_MAKE@
+HOST_OS =	@HOST_OS@
+
+EXTRA_LIBS=	@EXTRA_LIBS@
+THREADLIBS=	@THREADLIBS@
+
+IRRD_OPS_LIBS=  @IRRD_OPS_LIBS@
+CRYPT_LIB=      @CRYPT_LIB@
+FLEX_PATH=      @FLEX_PATH@
+YACC=		@YACC@
+
+CC= 		@CC@
+CFLAGS= 	@CFLAGS@ @DEFS@ @MODULES@ @GLIB_CFLAGS@ -DJOURNAL_SIZE
+CPPFLAGS= 	@CPPFLAGS@ @EXTRA_INCLUDE_DIRS@
+
+LD= 		@CC@
+LDFLAGS=	@LDFLAGS@ @GTHREADS_LIBS@ @GLIB_LIBS@
+RANLIB= 	@RANLIB@
+INSTALL= 	@INSTALL@ -D
+MAKEDEP= 	@MAKEDEP@
+MAKEDEPCLEAN= 	@MAKEDEPCLEAN@
+
+prefix=		@prefix@
+exec_prefix=	@exec_prefix@
+datarootdir=    @datarootdir@
+DESTDIR=	@sbindir@
+MANDIR=		@mandir@
+
+MRTLIB= 	../../lib/libmrt.a
+CFGLIB=		../../lib/libcfg.a
+MRT_LIBS=	$(CFGLIB) $(MRTLIB)
+SYS_LIBS=	@LIBS@
+LIBS=		$(MRT_LIBS) $(EXTRA_LIBS) $(SYS_LIBS)
+
+QUANTIFY=	@QUANTIFY@
+PURIFY=		@PURIFY@  -cache-dir=./
+
+SHELL = 	/bin/sh
+CP =		cp -p
+RM =		rm -f
+ARFLAGS =	crv
+
+PGPDIR =	@PGPDIR@

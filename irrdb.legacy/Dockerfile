@@ -11,7 +11,7 @@ RUN apt-get -qqy update \
         libglib2.0-dev \
         make \
     && rm -rf /var/cache/apt
-COPY src/ /app/src/
+COPY irrdb.legacy/src/ /app/src/
 RUN cd /app/src \
     && sed -i "s/git describe/echo 0.0 ||/" configure.ac \
     && mkdir m4 && autoreconf -fi \
@@ -30,7 +30,7 @@ RUN apt-get -qqy update \
         jq \
     && rm -rf /var/cache/apt
 WORKDIR /databases
-COPY irr-prune /usr/bin/irr-prune
+COPY irrdb.legacy/irr-prune /usr/bin/irr-prune
 RUN ln -sf /bin/bash /bin/sh
 
 # Cache busting. Use `--build-arg TODAY=$(date +%F)` to bust cache daily.

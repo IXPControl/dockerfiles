@@ -15,8 +15,10 @@ RUN apt-get update && apt-get install -y \
 RUN mkdir /bgpq4 && \
     cd /bgpq4 && \
     git clone https://github.com/bgp/bgpq4.git ./ && \
+    ./bootstrap && \
     ./configure && \
     make && \
-    make install
+    make install && \
+    make maintainer-clean
 
-CMD ["tail -f /dev/null"]
+CMD tail -f /dev/null

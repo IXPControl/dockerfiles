@@ -9,9 +9,9 @@ EXPOSE 179
 RUN apt-get update && apt-get install -y \
     --no-install-recommends \
     curl \
-    screen \
     supervisor \
     gnupg \
+    ca-certificates \
     procps && \
     apt-get autoremove -y && \
     rm -rf /var/lib/apt/lists/*

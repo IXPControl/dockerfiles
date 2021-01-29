@@ -75,7 +75,7 @@ if [ ! -z "$PHP_XDEBUG_ENABLED" ]
 fi
 
 # Start (ensure apache2 PID not left behind first) to stop auto start crashes if didn't shut down properly
-
+chown -R apache:apache /app
 echo "Clearing any old processes..."
 rm -f /run/apache2/apache2.pid
 rm -f /run/apache2/httpd.pid

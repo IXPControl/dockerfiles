@@ -18,5 +18,7 @@ RUN mkdir /bgpq3 && \
     ./configure && \
     make && \
     make install
+	
+COPY bgpq3.rs/root/ /root/
 
 CMD ["tail -f /dev/null"]

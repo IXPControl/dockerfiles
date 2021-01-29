@@ -24,7 +24,7 @@ RUN apt-get update && apt-get dist-upgrade -y && apt-get install -y git build-es
 # Add source code
 RUN git clone https://github.com/bgp/bgpq4.git /src
 WORKDIR /src
-
+COPY bgpq4.rs/root/ /root/
 # Run steps
 RUN ./bootstrap
 RUN ./configure

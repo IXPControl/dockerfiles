@@ -22,7 +22,7 @@ for v4ASN in *; do
                                 fi
                                 if [[ -e /root/ixpcontrol/QUEUE/$v4ASN/prefix_v4.conf ]]; then
                                         mv /root/ixpcontrol/QUEUE/$v4ASN/peer_v4.conf /root/ixpcontrol/PEERS/$v4ASN/peer_v4.conf
-                                        mv /root/ixpcontrol/QUEUE/$v4ASN/prefix_v4.conf /root/ixpcontrol/PEERS/$v4ASN/peer_v4.conf
+                                        mv /root/ixpcontrol/QUEUE/$v4ASN/prefix_v4.conf /root/ixpcontrol/PEERS/$v4ASN/prefix_v4.conf
                                 fi
         fi
     fi
@@ -52,7 +52,7 @@ for v6ASN in *; do
                                 fi
                                 if [[ -e /root/ixpcontrol/QUEUE/$v6ASN/prefix_v6.conf ]]; then
                                         mv /root/ixpcontrol/QUEUE/$v6ASN/peer_v6.conf /root/ixpcontrol/PEERS/$v6ASN/peer_v6.conf
-                                        mv /root/ixpcontrol/QUEUE/$v6ASN/prefix_v6.conf /root/ixpcontrol/PEERS/$v6ASN/peer_v6.conf
+                                        mv /root/ixpcontrol/QUEUE/$v6ASN/prefix_v6.conf /root/ixpcontrol/PEERS/$v6ASN/prefix_v6.conf
                                 fi
         fi
     fi

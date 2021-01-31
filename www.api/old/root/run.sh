@@ -1,42 +1,16 @@
-#!/usr/bin/env bash
-set -e
+#!/bin/sh
 
-if [ -z "$DOCKER_HOST" -a "$DOCKER_PORT_2375_TCP" ]; then
-	export DOCKER_HOST='tcp://docker:2375'
-fi
-
-DOCKER_SOCK=/var/run/docker.sock
-CRONTAB_FILE=/etc/crontabs/docker
-
-ensure_docker_socket_accessible() {
-    if ! grep -q "^docker:" /etc/group; then
-        # Ensure 'docker' user has permissions for docker socket (without changing permissions)
-        DOCKER_GID=$(stat -c '%g' ${DOCKER_SOCK})
-        if [ "${DOCKER_GID}" != "0" ]; then
-            if ! grep -qE "^[^:]+:[^:]+:${DOCKER_GID}:" /etc/group; then
-                # No group with such gid exists - create group docker
-                addgroup -g ${DOCKER_GID} docker
-                adduser docker docker
-            else
-                # Group with such gid exists - add user "docker" to this group
-                DOCKER_GROUP_NAME=`getent group "${DOCKER_GID}" | awk -F':' '{{ print $1 }}'`
-                adduser docker $DOCKER_GROUP_NAME
-            fi
-        else
-            # Docker socket belongs to "root" group - add user "docker" to this group
-            adduser docker root
-        fi
-    fi
-}
-
-ensure_docker_socket_accessible
-
+# Set the timezone. Base image does not contain the setup-timezone script, so an alternate way is used.
 if [ "$CONTAINER_TIMEZONE" ]; then
     cp /usr/share/zoneinfo/${CONTAINER_TIMEZONE} /etc/localtime && \
 	echo "${CONTAINER_TIMEZONE}" >  /etc/timezone && \
 	echo "Container timezone set to: $CONTAINER_TIMEZONE"
 fi
 
+# Force immediate synchronisation of the time and start the time-synchronization service.
+# In order to be able to use ntpd in the container, it must be run with the SYS_TIME capability.
+# In addition you may want to add the SYS_NICE capability, in order for ntpd to be able to modify its priority.
+ntpd -s
 
 # Apache server name change
 if [ ! -z "$APACHE_SERVER_NAME" ]

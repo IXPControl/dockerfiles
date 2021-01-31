@@ -1,7 +1,7 @@
 FROM ubuntu:focal
 
 MAINTAINER OceanIX Administrator <connect@oceanix.net.au>
-LABEL wikiurl="https://wiki.ixpcontrol.com/docker-image/zerotier.multi"
+LABEL wikiurl="https://wiki.ixpcontrol.com/docker-image/zerotier.slave"
 LABEL version="alpha"
 
 EXPOSE 179

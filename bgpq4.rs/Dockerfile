@@ -19,7 +19,7 @@ RUN apt-get update && apt-get install -y locales && rm -rf /var/lib/apt/lists/* 
 ENV LANG en_US.utf8
 
 # Install dependencies
-RUN apt-get update && apt-get dist-upgrade -y && apt-get install -y git build-essential autoconf automake markdown && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get dist-upgrade -y && apt-get install -y git build-essential autoconf automake markdown dos2unix && rm -rf /var/lib/apt/lists/*
 
 # Add source code
 RUN git clone https://github.com/bgp/bgpq4.git /src

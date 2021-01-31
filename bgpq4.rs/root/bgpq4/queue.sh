@@ -1,4 +1,5 @@
 cd /root/ixpcontrol/QUEUE;
+find . -type f | xargs -I {} dos2unix {}
 for v4ASN in *; do
     if [ -d "$v4ASN" ]; then
         if [[ -e /root/ixpcontrol/QUEUE/$v4ASN/peer_v4.conf ]]; then
@@ -29,6 +30,7 @@ for v4ASN in *; do
 done
 
 cd /root/ixpcontrol/QUEUE;
+find . -type f | xargs -I {} dos2unix {}
 for v6ASN in *; do
     if [ -d "$v6ASN" ]; then
         if [[ -e /root/ixpcontrol/QUEUE/$v6ASN/peer_v6.conf ]]; then

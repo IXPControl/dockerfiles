@@ -56,7 +56,7 @@ RUN curl -L -o /tmp/zerotier-install.sh https://install.zerotier.com/ && \
 	bash /tmp/zerotier-install.sh || exit 0
 	
 #install/configure OpenVPN
-    mkdir -p /root/ixpcontrol/ovpn && \
+RUN    mkdir -p /root/ixpcontrol/ovpn && \
     cd /root/ixpcontrol/ovpn && \
     /usr/share/easy-rsa/easyrsa init-pki && \
     /usr/share/easy-rsa/easyrsa gen-dh && \

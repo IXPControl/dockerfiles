@@ -20,6 +20,8 @@ RUN apt-get update && apt-get install -y \
     ca-certificates \
     make \
     automake \
+    m4 \
+    libtool \
     build-essential \
     procps 	&& \
     apt-get clean -y && \

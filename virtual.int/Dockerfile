@@ -16,6 +16,7 @@ RUN apt-get update && apt-get install -y \
     curl \
     supervisor \
     gnupg \
+    wget \
     ca-certificates \
     make \
     automake \

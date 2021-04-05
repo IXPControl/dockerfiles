@@ -5,9 +5,9 @@ LABEL wikiurl="https://wiki.ixpcontrol.com/docker-image/zerotier.slave"
 LABEL version="alpha"
 
 #EXPOSE VXLAN
-EXPOSE 4789
+#EXPOSE 4789
 #EXPOSE GRETAP / EOIP
-EXPOSE 1723
+#EXPOSE 1723
 #EXPOSE ZeroTier
 EXPOSE 9993
 
